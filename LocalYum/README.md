@@ -7,8 +7,9 @@ CentOS ,RHEL에 ISO 파일로 로컬 yum 저장소(Local yum repository) 만들�
 * Local repository 생성
 * Local repository 공유
 
-
+---
 ### Local repository 생성
+
 1. 설치 dvd 다운로드 합니다. 예로 CentOS(7버전)는 [http://isoredirect.centos.org/centos/7/isos/x86_64/](http://isoredirect.centos.org/centos/7/isos/x86_64/) 에서 다운로드가 가능합ㄴ디ㅏ.
 2. mount 할 폴더를 생성합니다.
 ```Linux
@@ -37,6 +38,7 @@ local -repo                          Local Repository                           
 nginx                                Nginx Repository x86_64 - Archive  
 ```
 
+---
 ### Local repository 공유
 위 방법은 서버마다 설정해야 하므로 관리하는 서버가 많을 경우 반복 작업을 해야합니다.
 
