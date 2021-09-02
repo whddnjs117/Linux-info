@@ -5,23 +5,44 @@ Linux 환경에서 처음으로 설정하는 svn 설치와 적용 방법을 정�
 
 
 ### 과정
+* svn 설치 
+* svn 저장소 생성 및 설정 
+* svn 상세 사용 방법
+
+### svn 설치
 1. CentOS 7 Subversion 설치(yum 리스트 우선 확인)
 ```shell
 yum list subversion
 ```
+
+
 2. subversion 설치
 ```shell
 yum install -y subversion
 ```
-3. svn의 저장소들을 저장할 폴더 생성 및 설정
+
+3. svn 환경변수 추가
+```shell
+vi /etc/profile
+
+#svn_path
+SVN_EDITOR=/usr/bin/vi
+export SVN_EDITOR
+```
+
+### svn 저장소 생성 및 설정
+
+1. svn의 저장소들을 저장할 폴더 생성 및 설정
 ```shell
 mkdir /app/svn
 ```
-4. svn의 저장소를 생성
+
+2. svn의 저장소를 생성
 ```shell
 svnadmin create --fs-type fsfs 저장소명
 ```    
-5. 생성된 저장소의 svnserve.conf 파일 수정
+
+3. 생성된 저장소의 svnserve.conf 파일 수정
 ```shell
 vi svnserve.conf
 ```         
@@ -33,7 +54,7 @@ vi svnserve.conf
 * realm : 인증할 때 보여주는 간단한 저장소 설명이며, 생략 가능하다.
 * none : 접근 권한 없음 , read : 읽기 권한 , write : 쓰기 권한
 
-6. 생성된 저장소의 기본 passwd로 계정 정보 추가
+4. 생성된 저장소의 기본 passwd로 계정 정보 추가
 ```shell
 vi passwd
 ```
@@ -41,7 +62,7 @@ vi passwd
 >   하단에 입력
 >   svn_id = svn_password
 
-7. 생성된 저장소의 기본 authz로 접근할 계정정보 추가하여
+5. 생성된 저장소의 기본 authz로 접근할 계정정보 추가하여
 ```shell
 vi authz
 ```
@@ -53,24 +74,23 @@ vi authz
 svn_id = rw #생성된 저장소의 루트경로에 svn_id 계정은 read , write 권한을 부여
 ```
 
-8. 생성된 저장소 확인
+6. 생성된 저장소 확인
 ```shell
 svn list svn://localhost 또는 ip / 저장소명
 svn info svn://localhost 또는 ip / 저장소명
 ```
 svn 인증확인에 실패했다면 , svnserve.conf , passwd , authz 설정 부분 재확인
 
-9. svn 환경변수 추가
-```shell
-vi /etc/profile
 
-#svn_path
-SVN_EDITOR=/usr/bin/vi
-export SVN_EDITOR
-```
-
-10. 생성된 저장소에 디렉토리 만들기
+### svn 상세 사용방법
+1. 생성된 저장소에 디렉토리 만들기
 ```shell
 svn mkdir svn://localhost 또는 ip/저장소명/생성할 디렉토리명
 ```
 
+2. 생성된 저장소에 import 하는 방법
+```shell
+svn import 저장할 데이터 svn://localhost 또는 ip/저장소명
+```
+>   업로드할 디렉토리일경우 /test (폴더 전체를) 
+>   업로드할 파일일경우 /test.html
