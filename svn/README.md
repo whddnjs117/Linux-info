@@ -4,7 +4,7 @@
 Linux 환경에서 처음으로 설정하는 svn 설치와 적용 방법을 정리하는 페이지
 
 
-### 과정
+## 과정
 * svn 설치 
 * svn 저장소 생성 및 설정 
 * svn 상세 사용 방법
@@ -29,6 +29,8 @@ vi /etc/profile
 SVN_EDITOR=/usr/bin/vi
 export SVN_EDITOR
 ```
+
+<hr>
 
 ### svn 저장소 생성 및 설정
 
@@ -81,6 +83,8 @@ svn info svn://localhost 또는 ip / 저장소명
 ```
 svn 인증확인에 실패했다면 , svnserve.conf , passwd , authz 설정 부분 재확인
 
+<hr>
+
 
 ### svn 상세 사용방법
 1. 생성된 저장소에 디렉토리 만들기
@@ -94,3 +98,13 @@ svn import 저장할 데이터 svn://localhost 또는 ip/저장소명
 ```
 >   업로드할 디렉토리일경우 /test (폴더 전체를) 
 >   업로드할 파일일경우 /test.html
+
+3. svn 체크아웃 받는 방법
+```shell
+svn check --username name --password 1234 svn://localhost 또는 ip/저장소명
+```
+
+4. svn update 하는 방법
+```shell
+svn update # 프로젝트 폴더로 이동하여 update 해야함
+```

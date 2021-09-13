@@ -18,6 +18,7 @@ put 다운로드한 파일명 #다운로드 파일 보내기(경로는 별도로
 ```shell
 tar -zxvf 다운로드파일명
 ```
+<hr>
 
 ### ant 환경변수 설정
 ```shell
@@ -28,10 +29,12 @@ ANT_HOME = /app/ant/apache-ant1.10.11 #본인은 ant설치위치를 /app/ant/하
 export ANT_HOME
 ```
 
+<hr>
+
 ### ant bulid 설정
 * 현재 ant 설치가 완료 되었으며 ant 실행
 ```shell
-ant 빌드명 # build.xml을 설정해야합니다.
+ant 빌드명 # build.xml을 설정해야합니다. 예시자료 기준 빌드명 build_project
 ```
 #### build.xml
 
@@ -203,3 +206,4 @@ copy는 복사를 해주는 역할을 한다.
 fileset으로 지정되어 있는 파일을 todir 디렉토리 위치로 파일을 복사해주는 역할을 한다.
 예를 들어 하나의 프로젝트에 외부 환경설정 파일들이 있을 시 프로젝트 실행시키는데 필요한 역할이 있다면 그역시도 was에 존재해야 
 정상적으로 프로젝트가 실행될 것이다. 그래서 외부 환경설정 파일들도 복사하여 올리기위해 존재한다.
+
